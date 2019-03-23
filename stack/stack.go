@@ -7,7 +7,7 @@ import (
 type Stack struct {
 	Nodes []*Node
 	Count uint
-	Max uint
+	Max   uint
 }
 
 type Node struct {
@@ -33,10 +33,10 @@ func (s *Stack) IsFull() bool {
 }
 
 // Push a node into stack
-func (s *Stack) Push(n *Node)  {
+func (s *Stack) Push(n *Node) {
 	if !s.IsFull() {
 		s.Nodes = append(s.Nodes, n)
-		s.Count ++
+		s.Count++
 		return
 	}
 	fmt.Println("Stack is full. Can not push into stack")
@@ -48,17 +48,17 @@ func (s *Stack) Pop() *Node {
 		return nil
 	}
 
-	s.Count --
+	s.Count--
 	return s.Nodes[s.Count]
 }
 
 // Top function returns last node of stack and not remove it from stack
 func (s *Stack) Top() *Node {
-	return s.Nodes[s.Size() - 1]
+	return s.Nodes[s.Size()-1]
 }
 
-func (s *Stack) PrintStack()  {
-	for i := 0; i < s.Size(); i ++ {
+func (s *Stack) PrintStack() {
+	for i := 0; i < s.Size(); i++ {
 		fmt.Print(s.Nodes[i].Value, " ")
 	}
 	fmt.Println()
@@ -91,4 +91,3 @@ func main() {
 	fmt.Printf("Node get by Pop function: %v\n", s.Pop().Value)
 	fmt.Printf("Node get by Pop function: %v\n", s.Pop().Value)
 }
-
