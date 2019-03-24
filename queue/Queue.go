@@ -56,6 +56,14 @@ func (q *Queue) dequeue() *Node {
 	return node
 }
 
+func printQueue(nodes []*Node) {
+	fmt.Println("Queue: ")
+	for _, n := range nodes {
+		fmt.Printf("%d ", n.Value)
+	}
+	fmt.Println()
+}
+
 func main() {
 	q := NewQueue()
 	q.enqueue(&Node{Value: 12})
@@ -70,8 +78,8 @@ func main() {
 	q.enqueue(&Node{Value: 199})
 	q.enqueue(&Node{Value: 299})
 
-	fmt.Println("Queue: ", q)
-	println()
+	printQueue(q.Nodes)
+
 	fmt.Println(q.dequeue(), q.dequeue(), q.dequeue(), q.dequeue(), q.dequeue(), q.dequeue(), q.dequeue(), q.dequeue())
 	fmt.Println(q.dequeue(), q.dequeue(), q.dequeue(), q.dequeue())
 }
