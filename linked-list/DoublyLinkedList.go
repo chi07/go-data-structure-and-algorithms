@@ -2,32 +2,32 @@ package main
 
 import "fmt"
 
-type Node struct {
+type NodeInt struct {
 	data int
-	next *Node
-	prev *Node
+	next *NodeInt
+	prev *NodeInt
 }
 
-type DLLInt struct {
-	head  *Node
-	tail  *Node
+type DoublyLinkedList struct {
+	head  *NodeInt
+	tail  *NodeInt
 	count int
 }
 
-func NewDoublyLinkListInt() *DLLInt {
-	return &DLLInt{}
+func NewDoublyLinkListInt() *DoublyLinkedList {
+	return &DoublyLinkedList{}
 }
 
-func (dl *DLLInt) IsEmpty() bool {
+func (dl *DoublyLinkedList) IsEmpty() bool {
 	return dl.count == 0
 }
 
-func (dl *DLLInt) Size() int {
+func (dl *DoublyLinkedList) Size() int {
 	return dl.count
 }
 
-func (dl *DLLInt) AddHead(value int) {
-	newNode := &Node{value, nil, nil}
+func (dl *DoublyLinkedList) AddHead(value int) {
+	newNode := &NodeInt{value, nil, nil}
 	if dl.IsEmpty() {
 		dl.head = newNode
 		dl.tail = newNode
@@ -38,8 +38,8 @@ func (dl *DLLInt) AddHead(value int) {
 	}
 }
 
-func (dl *DLLInt) AddTail(value int) {
-	newNode := &Node{value, nil, nil}
+func (dl *DoublyLinkedList) AddTail(value int) {
+	newNode := &NodeInt{value, nil, nil}
 	if dl.IsEmpty() {
 		dl.head = newNode
 		dl.tail = newNode
@@ -51,7 +51,7 @@ func (dl *DLLInt) AddTail(value int) {
 	dl.count--
 }
 
-func (dl *DLLInt) RemoveHead() (int, bool) {
+func (dl *DoublyLinkedList) RemoveHead() (int, bool) {
 	if dl.IsEmpty() {
 		fmt.Println("List is empty!")
 		return 0, false
@@ -69,7 +69,7 @@ func (dl *DLLInt) RemoveHead() (int, bool) {
 	return value, true
 }
 
-func (dl *DLLInt) RemoveNode(data int) bool {
+func (dl *DoublyLinkedList) RemoveNode(data int) bool {
 	current := dl.head
 	if current == nil {
 		fmt.Println("Linked List is empty!")
@@ -105,7 +105,7 @@ func (dl *DLLInt) RemoveNode(data int) bool {
 	return false
 }
 
-func (dl *DLLInt) IsPresent(value int) bool {
+func (dl *DoublyLinkedList) IsPresent(value int) bool {
 	tmp := dl.head
 	for tmp != nil {
 		if tmp.data == value {
@@ -116,7 +116,7 @@ func (dl *DLLInt) IsPresent(value int) bool {
 	return false
 }
 
-func (dl *DLLInt) Print() {
+func (dl *DoublyLinkedList) Print() {
 	tmp := dl.head
 	for tmp != nil {
 		print(tmp.data, " ")

@@ -2,37 +2,37 @@ package main
 
 import "fmt"
 
-type Node struct {
+type NodeLL struct {
 	data int
-	Next *Node
+	Next *NodeLL
 }
 
-type Stack struct {
-	head *Node
+type StackLinkedList struct {
+	head *NodeLL
 	size int
 }
 
-func NewStack() *Stack {
-	return &Stack{}
+func NewStackLinkedList() *StackLinkedList {
+	return &StackLinkedList{}
 }
 
-func (s *Stack) IsEmpty() bool {
+func (s *StackLinkedList) IsEmpty() bool {
 	return s.size == 0
 }
 
-func (s *Stack) Size() int {
+func (s *StackLinkedList) Size() int {
 	return s.size
 }
 
-func (s *Stack) Push(value int) {
-	newNode := &Node{data: value, Next: s.head}
+func (s *StackLinkedList) Push(value int) {
+	newNode := &NodeLL{data: value, Next: s.head}
 	s.head = newNode
 	s.size++
 }
 
-func (s *Stack) Pop() (int, bool) {
+func (s *StackLinkedList) Pop() (int, bool) {
 	if s.IsEmpty() {
-		fmt.Println("Stack is empty!")
+		fmt.Println("StackLinkedList is empty!")
 		return 0, false
 	}
 
@@ -42,7 +42,7 @@ func (s *Stack) Pop() (int, bool) {
 	return data, true
 }
 
-func (s *Stack) Print() {
+func (s *StackLinkedList) Print() {
 	tmp := s.head
 	for tmp.Next != nil {
 		fmt.Print(tmp.data, " ")
@@ -52,7 +52,7 @@ func (s *Stack) Print() {
 }
 
 func main() {
-	s := NewStack()
+	s := NewStackLinkedList()
 	// Add value in stack
 	s.Push(1)
 	s.Push(21)
